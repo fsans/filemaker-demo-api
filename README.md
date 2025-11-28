@@ -1,4 +1,4 @@
-# FileMaker Demo API
+# FileMaker Hibernate 6.5+ Demo API
 
 [![Coverage](https://img.shields.io/badge/Coverage-85%25-brightgreen)](./coverage-badge.svg)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/fsans/filemaker-demo-api)
@@ -8,7 +8,7 @@
 [![Java](https://img.shields.io/badge/Java-17+-orange)](https://openjdk.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-REST API demo for testing the FileMaker Hibernate Dialect with Spring Boot.
+REST API demo for testing the FileMaker Hibernate 6.5+ Dialect with Spring Boot.
 
 This demo app provides a full CRUD REST API with FileMaker Container field data management against a Contacts database. It serves as the companion test project for [FileMakerHibernate6](https://github.com/fsans/FileMakerHibernate6).
 
@@ -16,6 +16,8 @@ This demo app provides a full CRUD REST API with FileMaker Container field data 
 
 
 ## Prerequisites
+
+> If you need help building local maven repos, follow my gist about that matter: https://gist.github.com/fsans/your-gist-id
 
 1. **FileMaker JDBC Driver** installed in local Maven repo:
    ```bash
