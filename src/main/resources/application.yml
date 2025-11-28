@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: filemaker-demo-api
+
+  datasource:
+    url: jdbc:filemaker://192.168.30.130/Contacts
+    username: admin
+    password: wakawaka
+    driver-class-name: com.filemaker.jdbc.Driver
+    # Apache DBCP2 - works with FileMaker (uses validationQuery instead of isValid())
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      initial-size: 1
+      min-idle: 1
+      max-idle: 5
+      max-total: 10
+      # Validation query for FileMaker (doesn't support SELECT 1)
+      validation-query: SELECT * FROM FileMaker_Tables FETCH FIRST 1 ROWS ONLY
+      validation-query-timeout: 5
+      test-on-borrow: true
+      test-while-idle: true
+      duration-between-eviction-runs: 30s
+
+  jpa:
+    database-platform: org.hibernate.community.dialect.FileMakerDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.FileMakerDialect
+        "show_sql": true
+        "format_sql": true
+        "use_sql_comments": true
+        jdbc:
+          "use_get_generated_keys": false
+          "use_scrollable_resultset": false
+
+# Swagger UI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+# Server
+server:
+  port: 8080
