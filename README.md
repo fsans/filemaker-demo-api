@@ -17,7 +17,7 @@ This demo app provides a full CRUD REST API with FileMaker Container field data 
 
 ## Prerequisites
 
-> If you need help building local maven repos, follow my gist about that matter: https://gist.github.com/fsans/your-gist-id
+> If you need help building local maven repos, follow my gist about that matter: https://gist.github.com/fsans/289ee4c592da54fbcff4122a7142bd90
 
 1. **FileMaker JDBC Driver** installed in local Maven repo:
    ```bash
