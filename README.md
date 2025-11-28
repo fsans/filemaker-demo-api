@@ -2,7 +2,7 @@
 
 REST API demo for testing the FileMaker Hibernate Dialect with Spring Boot.
 
-This is the companion test project for [FileMakerHibernate6](https://github.com/fsans/FileMakerHibernate6).
+This demo app provides a full CRUD REST API with FileMaker Container field data management against a Contacts database. It serves as the companion test project for [FileMakerHibernate6](https://github.com/fsans/FileMakerHibernate6).
 
 ## Prerequisites
 
