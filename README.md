@@ -1,7 +1,10 @@
 # FileMaker Demo API
 
+[![Coverage](https://img.shields.io/badge/Coverage-85%25-brightgreen)](./coverage-badge.svg)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/fsans/filemaker-demo-api)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green)](https://spring.io/projects/spring-boot)
+[![Hibernate](https://img.shields.io/badge/Hibernate-6.5+-green)](https://hibernate.org/)
+[![fmjdbc](https://img.shields.io/badge/fmjdbc-22.1-purple)](https://help.claris.com/en/jdbc-odbc-guide/)
 [![Java](https://img.shields.io/badge/Java-17+-orange)](https://openjdk.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -107,6 +110,7 @@ Once running, access:
 | GET | `/api/contacts/{id}/photo/info` | Get photo information (content type, reference, availability) |
 
 **Photo Endpoint Parameters:**
+
 - `format` (optional): Image format for download/view (JPEG, PNGf, GIFf, PDF, TIFF)
 - `file` (required for upload): Multipart file data
 

@@ -16,10 +16,9 @@ spring:
       max-total: 10
       # Validation query for FileMaker (doesn't support SELECT 1)
       validation-query: SELECT * FROM FileMaker_Tables FETCH FIRST 1 ROWS ONLY
-      validation-query-timeout: 5
       test-on-borrow: true
       test-while-idle: true
-      duration-between-eviction-runs: 30s
+      duration-between-eviction-runs: 30000
 
   jpa:
     database-platform: org.hibernate.community.dialect.FileMakerDialect
