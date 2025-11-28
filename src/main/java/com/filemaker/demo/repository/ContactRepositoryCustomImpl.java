@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class ContactRepositoryCustomImpl implements ContactRepositoryCustom {
     private EntityManager entityManager;
 
     @Override
-    @SuppressWarnings("unchecked")
-    public Page<Contact> findAllWithPagination(Pageable pageable) {
+    @SuppressWarnings({"unchecked", "null"})
+    public @NonNull Page<Contact> findAllWithPagination(Pageable pageable) {
         // Build SQL with embedded pagination values (FileMaker requirement)
         int offset = (int) pageable.getOffset();
         int limit = pageable.getPageSize();

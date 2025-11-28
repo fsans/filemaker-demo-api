@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class ContactController {
         @ApiResponse(responseCode = "404", description = "Contact not found")
     })
     public ResponseEntity<Contact> getContactById(
-            @Parameter(description = "Contact ID") @PathVariable Long id
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id
     ) {
         return contactRepository.findById(id)
                 .map(ResponseEntity::ok)
@@ -91,7 +92,7 @@ public class ContactController {
         @ApiResponse(responseCode = "201", description = "Contact created successfully"),
         @ApiResponse(responseCode = "400", description = "Invalid input")
     })
-    public ResponseEntity<Contact> createContact(@RequestBody ContactDTO dto) {
+    public ResponseEntity<Contact> createContact(@RequestBody @NonNull ContactDTO dto) {
         Contact contact = new Contact();
         mapDtoToEntity(dto, contact);
         Contact saved = contactRepository.save(contact);
@@ -106,9 +107,10 @@ public class ContactController {
         @ApiResponse(responseCode = "200", description = "Contact updated successfully"),
         @ApiResponse(responseCode = "404", description = "Contact not found")
     })
+    @SuppressWarnings("null")
     public ResponseEntity<Contact> updateContact(
-            @Parameter(description = "Contact ID") @PathVariable Long id,
-            @RequestBody ContactDTO dto
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id,
+            @RequestBody @NonNull ContactDTO dto
     ) {
         return contactRepository.findById(id)
                 .map(existing -> {
@@ -124,9 +126,10 @@ public class ContactController {
         @ApiResponse(responseCode = "200", description = "Contact updated successfully"),
         @ApiResponse(responseCode = "404", description = "Contact not found")
     })
+    @SuppressWarnings("null")
     public ResponseEntity<Contact> patchContact(
-            @Parameter(description = "Contact ID") @PathVariable Long id,
-            @RequestBody ContactDTO dto
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id,
+            @RequestBody @NonNull ContactDTO dto
     ) {
         return contactRepository.findById(id)
                 .map(existing -> {
@@ -155,7 +158,7 @@ public class ContactController {
         @ApiResponse(responseCode = "404", description = "Contact not found")
     })
     public ResponseEntity<Void> deleteContact(
-            @Parameter(description = "Contact ID") @PathVariable Long id
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id
     ) {
         if (contactRepository.existsById(id)) {
             contactRepository.deleteById(id);
@@ -166,7 +169,7 @@ public class ContactController {
 
     // ==================== HELPER ====================
 
-    private void mapDtoToEntity(ContactDTO dto, Contact entity) {
+    private void mapDtoToEntity(@NonNull ContactDTO dto, @NonNull Contact entity) {
         entity.setEmail(dto.getEmail());
         entity.setLogin(dto.getLogin());
         entity.setPassword(dto.getPassword());

@@ -9,18 +9,21 @@ REST API demo for testing the FileMaker Hibernate Dialect with Spring Boot.
 
 This demo app provides a full CRUD REST API with FileMaker Container field data management against a Contacts database. It serves as the companion test project for [FileMakerHibernate6](https://github.com/fsans/FileMakerHibernate6).
 
+![API Architecture](api.png)
+
+
 ## Prerequisites
 
 1. **FileMaker JDBC Driver** installed in local Maven repo:
    ```bash
    cd ../FileMakerHibernate6
-   ./maven_deploy_driver.sh 21.0.2
+   ./maven_deploy_driver.sh 22.0.1
    ```
 
 2. **FileMaker Dialect** installed in local Maven repo:
    ```bash
    cd ../FileMakerHibernate6
-   ./maven_deploy_dialect.sh 21.0.2
+   ./maven_deploy_dialect.sh 22.0.1
    ```
 
 3. **FileMaker Server** running with the `Contacts` database accessible

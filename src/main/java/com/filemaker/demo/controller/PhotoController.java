@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.lang.NonNull;
 
 /**
  * Controller for handling contact photo uploads and downloads.
@@ -45,8 +46,8 @@ public class PhotoController {
         @ApiResponse(responseCode = "400", description = "Invalid file or upload failed")
     })
     public ResponseEntity<String> uploadPhoto(
-            @Parameter(description = "Contact ID") @PathVariable Long id,
-            @Parameter(description = "Photo file") @RequestParam("file") MultipartFile file
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id,
+            @Parameter(description = "Photo file") @RequestParam("file") @NonNull MultipartFile file
     ) {
         // Verify contact exists
         if (!contactRepository.existsById(id)) {
@@ -79,7 +80,7 @@ public class PhotoController {
         @ApiResponse(responseCode = "404", description = "Contact not found or no photo available")
     })
     public ResponseEntity<byte[]> downloadPhoto(
-            @Parameter(description = "Contact ID") @PathVariable Long id,
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id,
             @Parameter(description = "Image format (JPEG, PNGf, GIFf, PDF, TIFF)") 
             @RequestParam(required = false) String format
     ) {
@@ -122,6 +123,11 @@ public class PhotoController {
                 contentType = determineContentType(effectiveFormat);
             }
         }
+        
+        // Ensure contentType is never null
+        if (contentType == null || contentType.isEmpty()) {
+            contentType = "application/octet-stream";
+        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType(contentType));
@@ -138,7 +144,7 @@ public class PhotoController {
         @ApiResponse(responseCode = "404", description = "Contact not found or no photo available")
     })
     public ResponseEntity<byte[]> viewPhoto(
-            @Parameter(description = "Contact ID") @PathVariable Long id,
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id,
             @Parameter(description = "Image format (JPEG, PNGf, GIFf, PDF, TIFF)") 
             @RequestParam(required = false) String format
     ) {
@@ -176,6 +182,11 @@ public class PhotoController {
                 contentType = determineContentType(effectiveFormat);
             }
         }
+        
+        // Ensure contentType is never null
+        if (contentType == null || contentType.isEmpty()) {
+            contentType = "application/octet-stream";
+        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType(contentType));
@@ -193,7 +204,7 @@ public class PhotoController {
         @ApiResponse(responseCode = "404", description = "Contact not found")
     })
     public ResponseEntity<Void> deletePhoto(
-            @Parameter(description = "Contact ID") @PathVariable Long id
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id
     ) {
         if (!contactRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -220,7 +231,7 @@ public class PhotoController {
         @ApiResponse(responseCode = "404", description = "Contact not found")
     })
     public ResponseEntity<PhotoInfo> getPhotoInfo(
-            @Parameter(description = "Contact ID") @PathVariable Long id
+            @Parameter(description = "Contact ID") @PathVariable @NonNull Long id
     ) {
         var contactOpt = contactRepository.findById(id);
         if (contactOpt.isEmpty()) {
@@ -286,7 +297,7 @@ public class PhotoController {
      * Detect format from file reference (filename stored in container).
      * This is fast - single query vs probing multiple formats.
      */
-    private String detectFormatFromReference(Long id) {
+    private String detectFormatFromReference(@NonNull Long id) {
         String reference = containerFieldService.getContainerReference(TABLE_NAME, FIELD_NAME, id);
         if (reference == null || reference.isEmpty()) {
             return null;
@@ -311,7 +322,7 @@ public class PhotoController {
      * Download with smart format detection.
      * First tries to detect from file reference (fast), then falls back to probing (slow).
      */
-    private byte[] downloadWithAutoDetect(Long id) {
+    private byte[] downloadWithAutoDetect(@NonNull Long id) {
         // First: try to detect from file reference (fast - single query)
         String format = detectFormatFromReference(id);
         if (format != null) {

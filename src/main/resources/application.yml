@@ -3,7 +3,7 @@ spring:
     name: filemaker-demo-api
 
   datasource:
-    url: jdbc:filemaker://192.168.30.130/Contacts
+    url: jdbc:filemaker://192.168.0.24/Contacts
     username: admin
     password: wakawaka
     driver-class-name: com.filemaker.jdbc.Driver
