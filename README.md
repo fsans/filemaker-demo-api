@@ -1,6 +1,8 @@
 # FileMaker Demo API
 
-REST API demo for testing the FileMaker Hibernate Dialect with Spring Boot and HikariCP.
+REST API demo for testing the FileMaker Hibernate Dialect with Spring Boot.
+
+This is the companion test project for [FileMakerHibernate6](https://github.com/fsans/FileMakerHibernate6).
 
 ## Prerequisites
 
@@ -64,6 +66,6 @@ Import the Swagger spec from `http://localhost:8080/api-docs` into Postman for e
 
 - Spring Boot 3.2
 - Spring Data JPA
-- HikariCP (connection pool)
+- Apache DBCP2 (connection pool - HikariCP is not compatible with FileMaker JDBC)
 - FileMaker Hibernate Dialect
 - SpringDoc OpenAPI (Swagger)
