@@ -1,5 +1,10 @@
 # FileMaker Demo API
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/fsans/filemaker-demo-api)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green)](https://spring.io/projects/spring-boot)
+[![Java](https://img.shields.io/badge/Java-17+-orange)](https://openjdk.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 REST API demo for testing the FileMaker Hibernate Dialect with Spring Boot.
 
 This demo app provides a full CRUD REST API with FileMaker Container field data management against a Contacts database. It serves as the companion test project for [FileMakerHibernate6](https://github.com/fsans/FileMakerHibernate6).
