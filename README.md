@@ -42,9 +42,37 @@ spring:
 
 ## Running the Application
 
+### Development Mode
+
 ```bash
 mvn spring-boot:run
 ```
+
+### Production Deployment
+
+#### Generate JAR Package
+
+```bash
+mvn clean package
+```
+
+This will create an executable JAR file in the `target/` directory:
+
+- `target/filemaker-demo-api-1.0.0.jar`
+
+#### Run the JAR File
+
+```bash
+java -jar target/filemaker-demo-api-1.0.0.jar
+```
+
+Or with specific JVM options:
+
+```bash
+java -Xmx512m -Xms256m -jar target/filemaker-demo-api-1.0.0.jar
+```
+
+The application will start on `http://localhost:8080` by default.
 
 ## API Endpoints
 
