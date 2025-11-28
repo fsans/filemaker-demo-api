@@ -55,6 +55,8 @@ Once running, access:
 
 ### Available Endpoints
 
+#### Contact Management
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/contacts` | List all contacts (paginated) |
@@ -65,6 +67,20 @@ Once running, access:
 | PUT | `/api/contacts/{id}` | Update contact |
 | PATCH | `/api/contacts/{id}` | Partial update |
 | DELETE | `/api/contacts/{id}` | Delete contact |
+
+#### Photo Management (FileMaker Container Fields)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/contacts/{id}/photo` | Upload photo to contact's container field |
+| GET | `/api/contacts/{id}/photo` | Download contact's photo (as attachment) |
+| GET | `/api/contacts/{id}/photo/inline` | View contact's photo inline in browser |
+| DELETE | `/api/contacts/{id}/photo` | Delete contact's photo from container field |
+| GET | `/api/contacts/{id}/photo/info` | Get photo information (content type, reference, availability) |
+
+**Photo Endpoint Parameters:**
+- `format` (optional): Image format for download/view (JPEG, PNGf, GIFf, PDF, TIFF)
+- `file` (required for upload): Multipart file data
 
 ## Testing with Postman
 
