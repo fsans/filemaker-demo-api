@@ -6,7 +6,7 @@
 
     <groupId>com.filemaker.demo</groupId>
     <artifactId>filemaker-demo-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>FileMaker Demo API</name>
     <description>REST API demo for FileMaker Hibernate Dialect</description>
 
@@ -51,14 +51,14 @@
         <dependency>
             <groupId>com.filemaker.hibernate.dialect</groupId>
             <artifactId>FileMakerDialect</artifactId>
-            <version>21.0.2</version>
+            <version>22.0.1</version>
         </dependency>
 
         <!-- FileMaker JDBC Driver (local install) -->
         <dependency>
             <groupId>com.filemaker.jdbc.Driver</groupId>
             <artifactId>fmjdbc</artifactId>
-            <version>21.0.2</version>
+            <version>22.0.1</version>
         </dependency>
 
         <!-- Apache DBCP2 - works with FileMaker (doesn't require isValid()) -->
