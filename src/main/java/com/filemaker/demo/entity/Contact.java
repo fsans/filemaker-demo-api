@@ -1,21 +1,18 @@
 package com.filemaker.demo.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.community.dialect.entity.FileMakerBaseEntity;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * Contact entity mapped to FileMaker 'contact' table.
- * Uses FileMaker auto-enter serial for ID generation.
+ * Extends FileMakerBaseEntity to leverage FileMaker-specific ID generation
+ * and best practices for Hibernate integration.
  */
 @Entity
 @Table(name = "contact")
-public class Contact {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(insertable = false, updatable = false)
-    private Long id;
+public class Contact extends FileMakerBaseEntity {
 
     @Column(nullable = false)
     private String email;
@@ -88,9 +85,6 @@ public class Contact {
     }
 
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
